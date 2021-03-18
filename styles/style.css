@@ -10,53 +10,65 @@
         
         .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
 
-        html {
+    html {
         font-size: 62.5%; 
-       }
+    }
        /* stripping of styles */
-       body,
-       ul,
-       h1,
-       h2,
-       h3
-       p {
-           margin: 0;
-           padding: 0;
-       }
+    body,
+    ul,
+    h1,
+    h2,
+    h3
+    p {
+        margin: 0;
+        padding: 0;
+    }
 
-       ul {
-           list-style: none;
-       }
+    ul {
+        list-style: none;
+    }
 
-       a {
-           text-decoration: none;
-           text-transform: uppercase;
-       }
+    a {
+        text-decoration: none;
+        text-transform: uppercase;
+    }
 
-       img {
-           width: 100%;
-           height: auto;
-           display: block;
-       }
+    img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
 
 
-       body{
+    body{
            /* background-color:#FAF3DD; */
-           background-color: white;
-           line-height: 1.3;
-           font-family: 'Roboto', sans-serif;
-       }
+        background-color: white;
+        line-height: 1.3;
+        font-family: 'Roboto', sans-serif;
+    }
+
+       /* wrapper style */
+
+    .wrapper {
+            width: 90%;
+            max-width: 1280px;
+            margin: 0 auto;
+    }
+
+    /* header styles */
     
-       header{
+    header{
         background-color:#4b4a4a;
         
-       }
+    }
+
+    /* main styles */
 
         h1{
            /* color:#AED9E0; */
-           color:white;
-           padding:10px;
-           font-size:calc(1.5rem + 1vw)
+        color:white;
+        padding:10px;
+        font-size:calc(1.5rem + 1vw)
         }
 
         h3{
@@ -68,60 +80,36 @@
             width:300px;
         }
 
-       .wrapper {
-        width: 90%;
-        max-width: 1280px;
-        margin: 0 auto;
-       }
 
-       .questionBoard{
-           padding:10px;
-           background:aliceblue;
+
+    .questionBoard{
+            padding:10px;
+            background:aliceblue;
             border-radius: 10px;
             box-shadow: 0 0 10px 2px rgba(100, 100, 100, 0.1);
             overflow: hidden;
             width: 600px;
             max-width: 100%;
-       }
+    }
 
-       .questionContainer{
-           background:white;
-           flex-direction: column;
-           flex-wrap:wrap;
-           z-index: 1;
-           display:none;
-           
-       }
+    .questionContainer{
+        background:white;
+        flex-direction: column;
+        flex-wrap:wrap;
+        z-index: 1;
+        display:none;
+    
+    }
 
 
-
-       .active{
-           position:fixed;
-           top:50%;
-           left:50%;
-           width:100vw;
-           height:100vh;
-           transform: translate(-50%, -50%);
-           display:flex;
-           justify-content: center;
-           flex-direction: column;
-           align-items: center;
-           z-index:2;
+    .btnContainer{
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            z-index: 4;
+            transform: translate(-50%, 350%);
         }
 
-       .minimize{
-            display:flex;
-       }
-
-       .btnContainer{
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        z-index: 4;
-        transform: translate(-50%, 350%);
-        }
-
-       
         button {
             background-color: #8e44ad;
             border: none;
@@ -141,19 +129,42 @@
             background-color: #5e3370;
         }
 
+        /* for js functions*/
+
+        
+    .active{
+        position:fixed;
+        top:50%;
+        left:50%;
+        width:100vw;
+        height:100vh;
+        transform: translate(-50%, -50%);
+        display:flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        z-index:2;
+        }
+
+        .minimize{
+            display:flex;
+        }
+
+    /* used for hiding container */
         .hide{
             display:none;
         }
 
     
-       .saved{
-           background:white;
-           flex-direction: column;
-           flex-wrap:wrap;
-           z-index: 0;  
-           display:flex; 
-       }
+    .saved{
+        background:white;
+        flex-direction: column;
+        flex-wrap:wrap;
+        z-index: 0;  
+        display:flex; 
+    }
 
-       .show{
-           display:flex;
-       }
+       /* use to show a container */
+    .show{
+        display:flex;
+    }

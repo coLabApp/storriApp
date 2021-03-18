@@ -59,19 +59,27 @@ const questions = [{
  const questionBoard = document.querySelector('.questionBoard');
  const btnContainer = document.querySelector('.btnContainer')
 
- newBtn.addEventListener('click', function(){
-     questionContainer.classList.add('active');
-     btnContainer.classList.remove('hide')
 
+// when user clicks on new btn, there will be a display of question prompts 
+ newBtn.addEventListener('click', function(){
+     // adding class active to show question prompts
+     questionContainer.classList.add('active');
+     // removing class hide to show next button
+     btnContainer.classList.remove('hide')
+//starts with the first question id 
      displayData(0);
  })
+
+ // the current question id is 0 
  let currentQuestion = 0; 
 
+// display the properties inside the questions object  
  function displayData(questionItem){
      const item = questions[questionItem];
      questionTitle.textContent = item.question;
      questionText.textContent = item.questionText;
 
+    // creating cards that will show up after the questions are done to show what the user wrote
      const cards = document.createElement('div');
      cards.innerHTML = 
      `<div class="saved" >
@@ -88,9 +96,10 @@ const questions = [{
         
  }
 
-
+// everytime user clicks on the next button they will be taken to the next question in the questions object
  nextBtn.addEventListener('click', function(){
      currentQuestion++;
+     // after user clicks on next btn the input field is emptied 
      questionText.value = "";
    if(currentQuestion > questions.length){
    currentQuestion = 7;
