@@ -57,7 +57,8 @@ const questions = [{
  const saveEl = document.getElementById('saveContainer')
  const newBtn = document.querySelector('.newStory')
  const questionBoard = document.querySelector('.questionBoard');
- const btnContainer = document.querySelector('.btnContainer')
+ const btnContainer = document.querySelector('.btnContainer');
+
 
 
 // when user clicks on new btn, there will be a display of question prompts 
@@ -74,39 +75,65 @@ const questions = [{
  let currentQuestion = 0; 
 
 // display the properties inside the questions object  
- function displayData(questionItem){
-     const item = questions[questionItem];
-     questionTitle.textContent = item.question;
-     questionText.textContent = item.questionText;
-
+function displayData(questionItem){
+    const item = questions[questionItem];
+    questionTitle.value = item.question;
+    questionText.textContent = item.questionText;
     // creating cards that will show up after the questions are done to show what the user wrote
-     const cards = document.createElement('div');
-     cards.innerHTML = 
-     `<div class="saved" >
-         <div>
-             <h2>${item.question}</h2>
-         <textarea class="card" placeholder="write here">${questionText.value}</textarea>
-         </div>
-     <div>`
-     //     const textArea = cards.querySelector('textarea');
-     //     textArea.addEventListener('input', (e) =>{
-     //     const target = e.target.value
-     //     })
-         document.getElementById('saveContainer').appendChild(cards)
+    
         
- }
+}
 
 // everytime user clicks on the next button they will be taken to the next question in the questions object
- nextBtn.addEventListener('click', function(){
-     currentQuestion++;
+let inputValues = [];
+nextBtn.addEventListener('click', function(){
+    currentQuestion++;
+    //  titleValues.push(questionTitle.value);
+    //  console.log(titleValues)
+    inputValues.push([questionText.value, questionTitle.value]);
+    const inputArray = inputValues;
      // after user clicks on next btn the input field is emptied 
-     questionText.value = "";
-   if(currentQuestion > questions.length){
-   currentQuestion = 7;
-   } else if(currentQuestion === 8){
-       questionBoard.classList.add('hide')
+    questionText.value = "";
+    questionTitle.value = "";
+if(currentQuestion > questions.length){
+currentQuestion = 7;
+} else if(currentQuestion === 8){
+    inputArray.forEach(userInput =>{
+        if(userInput[0] !== ""){
+            const cards = document.createElement('div');
+            cards.innerHTML = 
+            `<div class="saved">
+                <div class= "card">
+                    <div class="tools">
+                        <button class="edit"><i class="fas fa-edit"></i></button>
+                    </div>
+                    <input class="questionTitle" type="text" value="${userInput[1]}"></input>
+                        <div>
+                        <textarea class="card" placeholder="write here">${userInput[0]}</textarea>
+                        </div>
+                </div>
+            <div>`
+            document.getElementById('saveContainer').appendChild(cards)
+        } else{
+            const cards = document.createElement('div');
+                    cards.innerHTML = 
+                    `<div class="saved">
+                        <div class= "card">
+                            <div class="tools">
+                                <button class="edit"><i class="fas fa-edit"></i></button>
+                            </div>
+                            <input class="questionTitle" type="text" value="${userInput[1]}"></input>
+                                <div>
+                                <textarea class="card" placeholder="write here">${userInput[0]}</textarea>
+                                </div>
+                        </div>
+                    <div>`
+                    document.getElementById('blankCards').appendChild(cards)
+        }
 
-   }
-   displayData(currentQuestion);
-     
- })
+    })
+    questionBoard.classList.add('hide')
+
+}
+displayData(currentQuestion); 
+})
