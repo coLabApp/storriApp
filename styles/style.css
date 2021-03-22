@@ -8,9 +8,16 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
         
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
 
+    :root {
+        --line-border-fill: #3498db;
+        --line-border-empty: #e0e0e0;
+    }
+
     html {
         font-size: 62.5%; 
     }
+
+
        /* stripping of styles */
     body,
     ul,
@@ -45,6 +52,8 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
         font-family: 'Roboto', sans-serif;
     }
 
+
+
        /* wrapper style */
 
     .wrapper {
@@ -60,8 +69,6 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
         
     }
 
-
-
     h1{
            /* color:#AED9E0; */
     color:white;
@@ -75,19 +82,74 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 
     textarea{
         font-size:2rem;
-        width:300px;
+        width:450px;
     }
 
 
-    .questionContainer{
-        background:white;
-        flex-direction: column;
-        flex-wrap:wrap;
-        z-index: 1;
+    .container {
+        text-align: center;
         display:none;
-    
+        position:relative;
+      }
+    .questionContainer{
+        display: flex;
+        flex-direction: column;
     }
-
+      
+      .progress-container {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        margin-bottom: 30px;
+        max-width: 100%;
+        width: 450px;
+      }
+      
+      .progress-container::before {
+        content: '';
+        background-color: #e0e0e0;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        height: 4px;
+        width: 100%;
+        z-index: -1;
+      }
+      
+      /* this is the grey line on the progress bar and this is position relative*/
+      
+      .progress {
+        background-color: #3498db;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        height: 4px;
+        width: 0%;
+        z-index: -1;
+        transition: 0.4s ease;
+      }
+      
+      /* this is progress and it is blue line which position absolute which is relative to the progress container */
+      
+      .circle {
+        background-color: #fff;
+        color: #999;
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 3px solid #e0e0e0;
+        transition: 0.4s ease;
+      }
+      
+      .circle.color {
+        border-color: #3498db;
+      }
+    
 
     .btnContainer{
         position: fixed;
@@ -95,7 +157,7 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
         left: 50%;
         z-index: 4;
         transform: translate(-50%, 350%);
-        }
+    }
 
     button {
         background-color: #8e44ad;
@@ -106,51 +168,23 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
         font-size: 2rem;
         padding: 10px;
         border-radius: 10px;
-        }
+    }
 
     button:hover {
         background-color: #732d91;
-        }
+    }
 
     button:focus {
         background-color: #5e3370;
-        }
+    }
 
     /* main styles */
     
     main section{
         display: flex;
-        flex-direction: row;
-        justify-content: space-around
-    }
-
-        /* for js functions*/
-
         
-    .active{
-        position:fixed;
-        top:50%;
-        left:50%;
-        width:100vw;
-        height:100vh;
-        transform: translate(-50%, -50%);
-        display:flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-        z-index:2;
-        }
-
-    .minimize{
-        display:flex;
     }
 
-    /* used for hiding container */
-    .hide{
-        display:none;
-    }
-
-    
     .saved{
         background:white;
         flex-direction: column;
@@ -165,7 +199,7 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
         border: 1px solid #4f5052;
         margin: 10px;
     }
-    .card{
+    /* .card{
         width:200px;
         height:200px;
         background:white;
@@ -177,7 +211,44 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
         border: 1px solid #4f5052;
         order:0;
         
+    } */
+
+    .sectionContainer{
+        display:flex;
+        flex-direction: column;
+        }
+
+    .storyBoard,
+    .saveContainer,
+    .blankCards{
+        display:flex;
+        flex-wrap:wrap;
     }
+
+
+        /* for js functions*/
+
+        
+    .active{
+        transform: translateY(200%);
+        display:flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center; 
+        z-index:2;
+        background-color:white;
+        }
+
+    .minimize{
+        display:flex;
+    }
+
+    /* used for hiding container */
+    .hide{
+        display:none;
+    }
+
+    
 
        /* use to show a container */
     .show{
